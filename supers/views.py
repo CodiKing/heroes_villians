@@ -10,10 +10,10 @@ from .models import Supers
 @api_view(['GET', 'POST'])
 def supers_list(request):
     if request.method == 'GET':
-        super_type = request.query_params.get('super_type_id')
+        super_type = request.query_params.get('type')
         queryset = Supers.objects.all()
         if super_type:
-            queryset = queryset.filter(super_type_id = super_type)
+            queryset = queryset.filter(type__name = super_type)
             serializer = SupersSerializer(queryset, many=True)
         return Response(serializer.data)
     elif request.method == "POST":
