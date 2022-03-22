@@ -10,7 +10,7 @@ from .models import Supers
 @api_view(['GET', 'POST'])
 def supers_list(request):
     if request.method == 'GET':
-        super_type = request.query_params.get('super_type_id_id')
+        super_type = request.query_params.get('super_type_id')
         print(super_type)
         queryset = Supers.objects.all()
         if super_type:
